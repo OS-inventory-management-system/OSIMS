@@ -1,6 +1,15 @@
 import express from 'express'
 import cors from 'cors'
+import {Client} from 'pg'
 
+// const client = new Client({
+//     user: 'postgres',
+//     password: 'hanshotfirst21',
+//     port:5432,
+//     host: 'ims.c29y4e4eay89.us-east-1.rds.amazonaws.com',
+//     database: 'postgres',
+//     ssl: {rejectUnauthorized:false}
+// })
 
 const app = express()
 
