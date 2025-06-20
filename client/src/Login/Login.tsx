@@ -9,35 +9,40 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   setError('');
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
-    setError('');
-
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        // Store token if your backend returns one
-        localStorage.setItem('token', data.token);
-        navigate('/home');
-      } else {
-        const errorData = await response.json();
-        setError(errorData.message || 'Invalid username or password');
-      }
-    } catch {
-      setError('Login failed. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+    navigate('/home');
   };
+
+  //   try {
+  //     const response = await fetch('/api/auth/login', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ username, password }),
+  //     });
+
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       // Store token if your backend returns one
+  //       localStorage.setItem('token', data.token);
+  //       navigate('/home');
+  //     } else {
+  //       const errorData = await response.json();
+  //       setError(errorData.message || 'Invalid username or password');
+  //     }
+  //   } catch {
+  //     setError('Login failed. Please try again.');
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   return (
     <div className='login-container'>
